@@ -1,0 +1,50 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TelephoneStation.Domain.View"
+             xmlns:vm="clr-namespace:TelephoneStation.Domain.Controllers" 
+             xmlns:Converters="clr-namespace:TelephoneStation.Abstract.Implementations.Converters" x:Class="TelephoneStation.Domain.View.AgentList" 
+             d:DataContext="{d:DesignInstance Type={x:Type vm:AgentListController}}"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="200">
+
+    <UserControl.Resources>
+        <Converters:BusyToColorConverter x:Key="BusyToColorConverter"/>
+    </UserControl.Resources>
+
+    <GroupBox Header="Операторы">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox ItemsSource="{Binding Agents}" SelectedItem="{Binding SelectedAgent}" Grid.Column="0" Grid.ColumnSpan="2">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Border Grid.Column="1" DockPanel.Dock="Right"  CornerRadius="10" Width="10" Height="10" Background="{Binding isBusy, Converter={StaticResource BusyToColorConverter}}"/>
+
+
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Label Grid.Row="1" Content="Имя" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <TextBox Text="{Binding NewAgentName, UpdateSourceTrigger=PropertyChanged}" Margin="3" Grid.Row="1" Grid.Column="1" FontSize="16" />
+            <Button Command="{Binding AddAgent}" Margin="3" Grid.Row="2" Content="Добавить"  FontSize="16" />
+            <Button Command="{Binding RemoveSelectedAgent}" Margin="3" Grid.Row="2" Grid.Column="1" Content="Удалить"  FontSize="16" />
+        </Grid>
+    </GroupBox>
+</UserControl>

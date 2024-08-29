@@ -1,0 +1,39 @@
+﻿<Window x:Class="TelephoneStation.Domain.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TelephoneStation.Domain.View"
+        xmlns:vm="clr-namespace:TelephoneStation.Domain.Controllers"
+        mc:Ignorable="d"
+        xmlns:views="clr-namespace:TelephoneStation.Domain.View" 
+        xmlns:controllers="clr-namespace:TelephoneStation.Domain.Controllers" 
+        d:DataContext="{d:DesignInstance Type=controllers:MainWindowController}"
+        Title="Телефония" Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="/wwwroot/img/http___178.154.248.111_imgproxy_insecure_fit_3999_600_ce_0_plain_s3___bizar-uploads_common_uploads_0j0_7nra37JhkeJdGom4F.jpg">
+    <Window.DataContext>
+        <controllers:MainWindowController></controllers:MainWindowController>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <UserControl>
+            <views:AgentList DataContext="{Binding AgentsVM}"></views:AgentList>
+        </UserControl>
+        <UserControl Grid.Column="1" Grid.RowSpan="2">
+            <views:LogConsole DataContext="{Binding LogConsole}"></views:LogConsole>
+        </UserControl>
+        <UserControl Grid.Column="2" >
+            <StackPanel>
+                <TextBox x:Name="test" VerticalAlignment="Center" HorizontalAlignment="Center" Text="qweqw"></TextBox>
+                <Button Content="Добавить text" Command="{Binding AddTextToConsole}"></Button>
+            </StackPanel>
+        </UserControl>
+    </Grid>
+</Window>
