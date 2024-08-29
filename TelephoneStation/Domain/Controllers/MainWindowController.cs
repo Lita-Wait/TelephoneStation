@@ -12,10 +12,12 @@ namespace TelephoneStation.Domain.Controllers
     public class MainWindowController
     {
         public INotifyLogger LogConsole { get; set; } = new INotifyLogger();
-        public AgentListController AgentsVM { get; set; }
+        public AgentListVM AgentsVM { get; set; }
+        public CallsVM CallsVM { get; set; }
         public MainWindowController()
         {
-            AgentsVM = new AgentListController(LogConsole);
+            AgentsVM = new AgentListVM(LogConsole);
+            CallsVM = new CallsVM(LogConsole);
 
         }
 

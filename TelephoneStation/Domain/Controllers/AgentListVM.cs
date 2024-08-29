@@ -13,9 +13,9 @@ using TelephoneStation.Domain.Model;
 
 namespace TelephoneStation.Domain.Controllers
 {
-    public class AgentListController : INotifyPropertyChanged
+    public class AgentListVM
     {
-        private ILogger _logger;
+        private ILogger Logger;
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private ObservableCollection<Agent> _agents;
@@ -27,9 +27,9 @@ namespace TelephoneStation.Domain.Controllers
         private Agent _selectedAgent;
         public Agent SelectedAgent { get => _selectedAgent; set => SetProperty(ref _selectedAgent, value); }
 
-        public AgentListController(ILogger logger)
+        public AgentListVM(ILogger _logger)
         {
-            _logger = logger;
+            Logger = _logger;
 
             Agents =
             [
@@ -58,8 +58,7 @@ namespace TelephoneStation.Domain.Controllers
         {
             var name = SelectedAgent.Name;
             Agents.Remove(SelectedAgent);
-            _logger.Log($"Оператор {name} удален.");
-            //SelectedAgent = null;
+            Logger.Log($"Оператор {name} удален.");
         }
         private bool CanRemoveAgent(object commandParameter)
         {
@@ -72,7 +71,7 @@ namespace TelephoneStation.Domain.Controllers
         private void PerformAddAgent(object commandParameter)
         {
             Agents.Add(new Agent { Name = NewAgentName });
-            _logger.Log($"Оператор {NewAgentName} добавлен.");
+            Logger.Log($"Оператор {NewAgentName} добавлен.");
             NewAgentName = string.Empty;
         }
         private bool CanAddAgent(object commandParameter)

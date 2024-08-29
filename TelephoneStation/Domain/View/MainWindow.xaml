@@ -30,10 +30,7 @@
             <views:LogConsole DataContext="{Binding LogConsole}"></views:LogConsole>
         </UserControl>
         <UserControl Grid.Column="2" >
-            <StackPanel>
-                <TextBox x:Name="test" VerticalAlignment="Center" HorizontalAlignment="Center" Text="qweqw"></TextBox>
-                <Button Content="Добавить text" Command="{Binding AddTextToConsole}"></Button>
-            </StackPanel>
+            <views:CallList DataContext="{Binding CallsVM}"></views:CallList>
         </UserControl>
     </Grid>
 </Window>

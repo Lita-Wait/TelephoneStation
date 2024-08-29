@@ -1,12 +1,14 @@
-﻿<UserControl
+﻿<UserControl 
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TelephoneStation.Domain.View"
              xmlns:vm="clr-namespace:TelephoneStation.Domain.Controllers" 
-             xmlns:Converters="clr-namespace:TelephoneStation.Abstract.Implementations.Converters" x:Class="TelephoneStation.Domain.View.AgentList" 
-             d:DataContext="{d:DesignInstance Type={x:Type vm:AgentListController}}"
+             xmlns:Converters="clr-namespace:TelephoneStation.Abstract.Implementations.Converters" 
+             d:DataContext="{d:DesignInstance Type=vm:AgentListVM}"
+             xmlns:Model="clr-namespace:TelephoneStation.Domain.Model" x:Class="TelephoneStation.Domain.View.AgentList" 
+             
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="200">
 
