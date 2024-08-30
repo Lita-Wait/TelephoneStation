@@ -21,6 +21,10 @@ namespace TelephoneStation.Domain.Controllers
 
         }
 
+
+
+
+
         private RelayCommand addTextToConsole;
         public ICommand AddTextToConsole => addTextToConsole ??= new RelayCommand(execute: PerformAddTextToConsole, canExecute: CanAddTextToConsole);
         private void PerformAddTextToConsole(object commandParameter)

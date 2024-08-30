@@ -13,7 +13,8 @@ namespace TelephoneStation.Abstract.Implementations.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if(value is bool == false)
+            var b = (bool)value;
+            if(b)
             {
                 return Brushes.Red;
             }
