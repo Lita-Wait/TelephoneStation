@@ -16,11 +16,10 @@ namespace TelephoneStation.Domain.Controllers
     public class AgentListVM : INotifyPropertyChanged
     {
         private ILogger Logger;
-        public static event PropertyChangedEventHandler? StaticPropertyChanged;
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private static ObservableCollection<Agent> _agents;
-        public static ObservableCollection<Agent> Agents { get => _agents; set => SetPropertyStatic(ref _agents, value); }
+        private ObservableCollection<Agent> _agents;
+        public ObservableCollection<Agent> Agents { get => _agents; set => SetProperty(ref _agents, value); }
 
         private string _newAgentName;
         public string NewAgentName { get => _newAgentName; set => SetProperty(ref _newAgentName, value); }
@@ -37,21 +36,11 @@ namespace TelephoneStation.Domain.Controllers
                 new Agent() { Name = "Андрей" },
                 new Agent() { Name = "Виталий" },
                 new Agent() { Name = "Алексей" },
+                new Agent() { Name = "Наталья" },
+                new Agent() { Name = "Иван" }
             ];
         }
 
-
-        protected static bool SetPropertyStatic<T>(ref T field, T newValue, [CallerMemberName] string propertyName = "")
-        {
-            if (!Equals(field, newValue))
-            {
-                field = newValue;
-                StaticPropertyChanged?.Invoke(_agents, new PropertyChangedEventArgs(propertyName));
-                return true;
-            }
-
-            return false;
-        }
         protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = "")
         {
             if (!Equals(field, newValue))

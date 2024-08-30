@@ -27,7 +27,7 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <ListBox ItemsSource="{Binding Agents}" SelectedItem="{Binding SelectedAgent}" Grid.Column="0" Grid.ColumnSpan="2">
+            <ListBox ItemsSource="{Binding Agents, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedAgent}" Grid.Column="0" Grid.ColumnSpan="2">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>

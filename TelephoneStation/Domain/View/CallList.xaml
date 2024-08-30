@@ -5,23 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TelephoneStation.Domain.View"
              xmlns:vm="clr-namespace:TelephoneStation.Domain.Controllers"
-             d:DataContext="{d:DesignInstance Type=vm:CallsVM}"
+             d:DataContext="{d:DesignInstance Type=vm:MainWindowController}"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="200">
     <GroupBox>
-        <GroupBox.Header>
-            <TextBlock>
-                <Run Text="Текущие звонки: "></Run>
-                <Run Text="{Binding Calls.Count, Mode=OneWay}"></Run>
-            </TextBlock>
-        </GroupBox.Header>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="5*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-            <ListBox ItemsSource="{Binding Calls}"></ListBox>
-            <Button Grid.Row="1" Margin="5" Content="Добавить соеденение" Command="{Binding AddCall}"></Button>
-        </Grid>
+    <GroupBox.Header>
+        <TextBlock>
+             <Run Text="Текущие звонки: "></Run>
+             <Run Text="{Binding CallsFV.Count, Mode=OneWay}"></Run>
+        </TextBlock>
+    </GroupBox.Header>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <ListBox ItemsSource="{Binding CallsFV}"></ListBox>
+        <Button Grid.Row="1" Margin="5" Content="Добавить соеденение" Command="{Binding AddCall}"></Button>
+    </Grid>
     </GroupBox>
 </UserControl>
