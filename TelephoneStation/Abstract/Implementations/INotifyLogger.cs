@@ -7,25 +7,10 @@ namespace TelephoneStation.Abstract.Implementations
 {
     public class INotifyLogger : INotifyPropertyChanged, ILogger
     {
-        private StringBuilder _textHolder = new StringBuilder();
-
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private string _logMessage;
-        public string LogMessage
-        {
-            get => _logMessage;
-            set
-            {
-                _logMessage = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        private StringBuilder _textHolder = new StringBuilder();
+        public string? LogMessage { get; set; }
 
         public void Log(string message)
         {

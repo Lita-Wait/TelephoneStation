@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="wwwroot\img\http___178.154.248.111_imgproxy_insecure_fit_3999_600_ce_0_plain_s3___bizar-uploads_common_uploads_0j0_7nra37JhkeJdGom4F.jpg" />
   </ItemGroup>
 

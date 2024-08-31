@@ -6,11 +6,11 @@
              xmlns:local="clr-namespace:TelephoneStation.Domain.View"
              xmlns:vm="clr-namespace:TelephoneStation.Domain.Controllers" 
              xmlns:Converters="clr-namespace:TelephoneStation.Abstract.Implementations.Converters" 
-             d:DataContext="{d:DesignInstance Type=vm:AgentListVM}"
+             
              xmlns:Model="clr-namespace:TelephoneStation.Domain.Model" x:Class="TelephoneStation.Domain.View.AgentList" 
              
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="200">
+             d:DesignHeight="300" d:DesignWidth="300">
 
     <UserControl.Resources>
         <Converters:BusyToColorConverter x:Key="BusyToColorConverter"/>
@@ -32,7 +32,7 @@
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Center"/>

@@ -30,7 +30,7 @@
             <views:LogConsole DataContext="{Binding LogConsole}"></views:LogConsole>
         </UserControl>
         <UserControl Grid.Column="2" >
-            <views:CallList></views:CallList>
+            <views:CallList DataContext="{Binding CallListVM}" ></views:CallList>
         </UserControl>
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -18,14 +19,10 @@ namespace TelephoneStation.Domain.Controllers
         private ILogger Logger;
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private ObservableCollection<Agent> _agents;
-        public ObservableCollection<Agent> Agents { get => _agents; set => SetProperty(ref _agents, value); }
+        public ObservableCollection<Agent> Agents {  get; set; }
+        public string NewAgentName { get; set; }
+        public Agent SelectedAgent { get; set; }
 
-        private string _newAgentName;
-        public string NewAgentName { get => _newAgentName; set => SetProperty(ref _newAgentName, value); }
-
-        private Agent _selectedAgent;
-        public Agent SelectedAgent { get => _selectedAgent; set => SetProperty(ref _selectedAgent, value); }
 
         public AgentListVM(ILogger _logger)
         {
@@ -39,18 +36,6 @@ namespace TelephoneStation.Domain.Controllers
                 new Agent() { Name = "Наталья" },
                 new Agent() { Name = "Иван" }
             ];
-        }
-
-        protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = "")
-        {
-            if (!Equals(field, newValue))
-            {
-                field = newValue;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-                return true;
-            }
-
-            return false;
         }
 
         private RelayCommand removeSelectedAgent;
